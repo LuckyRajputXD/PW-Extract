@@ -120,7 +120,7 @@ async def account_login(bot: Client, m: Message):
         if raw_text5 == 'videos':
             for data in response3:
                 try:      
-                    url = f"https://d26g5bnklkwsh4.cloudfront.net/{data['url'].split('/')[-2]}/hls/720/main.m3u8" if raw_text5 == "videos" else f"{data['baseUrl']}{data['key']}"
+                    url = f"https://psitoffers.store/testkey.php?vid={data['url'].split('/')[-2]}&quality=720" if raw_text5 == "videos" else f"{data['baseUrl']}{data['key']}"
                     topic = data['topic']
                     #print(url)
                     write = f"{topic} {url}\n"
