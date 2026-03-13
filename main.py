@@ -118,15 +118,21 @@ async def account_login(bot: Client, m: Message):
         #    sys.exit(1)
         
         if raw_text5 == 'videos':
-            for data in response3:
-                try:      
-                    url = f"https://psitoffers.store/testkey.php?vid={data['url'].split('/')[-2]}&quality=720" if raw_text5 == "videos" else f"{data['baseUrl']}{data['key']}"
-                    topic = data['topic']
-                    #print(url)
-                    write = f"{topic} {url}\n"
-                    to_write = to_write + write
-                except:
-                    pass
+    for data in response3:
+        try:
+            topic = data['topic']
+            parent = data['tags'][0]['_id']
+            child = data['_id']
+            vid = data['videoDetails']['_id']
+
+            link = f"https://d1d34p8vz63oiq.cloudfront.net/{vid}/master.mpd"
+            final = f"{topic} : {link}&childId={child}&parentId={parent}"
+
+            write = f"{final}\n"
+            to_write = to_write + write
+
+        except:
+            pass
         else: #for notes + dpps
             for i in range(len(response3)):
                 #print(response3)
